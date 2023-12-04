@@ -25,6 +25,14 @@ view: order_items {
     type: string
     sql: ${TABLE}.phones ;;
   }
+  dimension: transaction_date {
+    label: "Transaction Date"
+    description: "Date when users viewed content"
+    type: date
+    convert_tz: no
+    allow_fill: no
+    sql: ${TABLE}."transaction date";;
+  }
   dimension_group: returned {
     type: time
     timeframes: [raw, time, date, week, month, quarter, year]
