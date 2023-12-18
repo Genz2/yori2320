@@ -33,6 +33,20 @@ view: order_items {
     allow_fill: no
     sql: ${TABLE}."transaction date";;
   }
+
+  measure: total_revenue_formatted {
+    type: sum
+    sql: ${sale_price} - 0.5;;
+    html: {% if value < 0 %}
+          <p style="color:red">({{rendered_value}})</p>
+          {% else %}
+          <p>{{rendered_value}}</p>
+          {% endif %}
+
+      ;;
+    value_format_name: usd
+  }
+
   dimension_group: returned {
     type: time
     timeframes: [raw, time, date, week, month, quarter, year]

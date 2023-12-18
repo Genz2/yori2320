@@ -82,6 +82,15 @@ view: products {
       url: "/dashboards/16?Category={{ value | url_encode }}&Brand={{ _filters['products.brand'] | url_encode }}"
     }
   }
+
+
+  dimension: negritas {
+    type: string
+    sql: ${TABLE}.category ;;
+    html: <p style="text-align: center; font-weight: bold;">{{value}}</p>;;
+    }
+
+
   # END OF THIS EXAMPLE
   dimension: department {
     type: string
