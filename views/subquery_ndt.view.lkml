@@ -16,15 +16,16 @@ view: subquery_ndt {
       sql: ${TABLE}.count;;
     }
 
+    # In this measure we obtain the total sum of the dimension count, later with liquid using the conditional format we .
+    #established that numbers greater than 100 will be marked with purple color
     measure: total_count {
     type:  sum
     sql: ${count}  ;;
-      html: {% if value > 100 %}
+      html: {% if value >= 100 %}
       <p style="color:purple">({{rendered_value}})</p>
       {% else %}
       <p>{{rendered_value}}</p>
       {% endif %};;
-      value_format_name:  usd
     }
 
 # In this measure we are calculating the average of a count, in order to do so we had to dimensionalize the measure
