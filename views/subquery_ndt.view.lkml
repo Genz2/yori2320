@@ -13,12 +13,23 @@ view: subquery_ndt {
     dimension: count {
       description: ""
       type: number
+      sql: ${TABLE}.count;;
     }
+
+    measure: total_count {
+    type:  sum
+    sql: ${count}  ;;
+      html: {% if value > 100 %}
+      <p style="color:purple">({{rendered_value}})</p>
+      {% else %}
+      <p>{{rendered_value}}</p>
+      {% endif %};;
+      value_format_name:  usd
+    }
+
 # In this measure we are calculating the average of a count, in order to do so we had to dimensionalize the measure
   measure: average_count {
     type: average
     sql: ${count} ;;
     }
   }
-
-
