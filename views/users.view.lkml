@@ -57,15 +57,43 @@ view: users {
   # ----- Sets of fields for drilling ------
   set: detail {
     fields: [
-	id,
-	first_name,
-	last_name,
-	events.count,
-	orders.count,
-	saralooker.count,
-	sindhu.count,
-	user_data.count
-	]
+  id,
+  first_name,
+  last_name,
+  events.count,
+  orders.count,
+  saralooker.count,
+  sindhu.count,
+  user_data.count
+  ]
+  }
+  dimension: is_m {
+    type: yesno
+    sql: ${TABLE}.gender = 'm' ;;
+  }
+# This is correct
+  measure: total_m {
+    type: number
+    sql: SUM(CASE WHEN ${is_male} THEN 2 ELSE 1 END) ;;
+  }
+# This is NOT correct
+  measure: total_female {
+    type: number
+    sql: SUM(CASE WHEN ${is_male} = 'Yes' THEN 2 ELSE 1 END) ;;
+  }
+  dimension: is_male {
+    type: yesno
+    sql: ${TABLE}.gender = 'male' ;;
+  }
+# This is correct
+  measure: total_male {
+    type: number
+    sql: SUM(CASE WHEN ${is_male} THEN 2 ELSE 1 END) ;;
+  }
+# This is NOT correct
+  measure: total_not_male {
+    type: number
+    sql: SUM(CASE WHEN ${is_male} = 'Yes' THEN 2 ELSE 1 END) ;;
   }
 
 }

@@ -33,19 +33,38 @@ view: order_items {
     allow_fill: no
     sql: ${TABLE}."transaction date";;
   }
-
-  measure: total_revenue_formatted {
-    type: sum
-    sql: ${sale_price} - 0.5;;
-    html: {% if value < 0 %}
-          <p style="color:red">({{rendered_value}})</p>
-          {% else %}
-          <p>{{rendered_value}}</p>
-          {% endif %}
-
-      ;;
-    value_format_name: usd
+  parameter: timeframe_param {
+    label: "Date Granularity"
+    type: unquoted
+    allowed_value: {
+      label: "Visualize by Month"
+      value: "month"
+    }
+    allowed_value: {
+      label: "Visualize by Week"
+      value: "week"
+    }
+    allowed_value: {
+      label: "Visualize by Day"
+      value: "day"
+    }
   }
+
+  dimension: dynamic_timeframe {
+    label: "Dynamic Order Created Date"
+    type: date
+    sql:
+      {% if timeframe_param._parameter_value == 'month' %}
+        date_trunc('month', ${returned_date} :: date)
+      {% elsif timeframe_param._parameter_value == 'week' %}
+        date_trunc('week', ${returned_date} :: date)
+      {% elsif timeframe_param._parameter_value == 'day' %}
+       ${returned_date}
+      {% endif %};;
+    convert_tz: no
+  }
+
+
 
   dimension_group: returned {
     type: time

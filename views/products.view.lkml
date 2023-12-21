@@ -11,6 +11,21 @@ view: products {
     type: string
     sql: ${TABLE}.brand ;;
   }
+  dimension: brand_linked {
+    type: string
+    sql: ${TABLE}.brand ;;
+    html: <a href="https://www.google.com/search?q={{value | url_encode }}">{{value}}</a> ;;
+  }
+  dimension:  brand_linked_parameter {
+    type: string
+    sql: ${TABLE}.brand ;;
+    link: {
+      label: "Google"
+      url: "http://www.google.com/search?q={{ value }}"
+      icon_url: "http://google.com/favicon.ico"
+    }
+  }
+
   dimension: category {
     type: string
     sql: ${TABLE}.category ;;
@@ -116,4 +131,5 @@ view: products {
     type: count
     drill_fields: [id, item_name, inventory_items.count]
   }
+
 }
