@@ -72,9 +72,10 @@ view: products {
 #     html:  <a href="/dashboards/16?Category={{ value | url_encode }}&Brand={{ _filters['products.brand'] | url_encode }}">{{ value }}</a> ;;
     link: {
       label: "Category & Brand Info"
-      url: "/dashboards/231?Category={{ value | url_encode }}&Brand={{ _filters['products.brand'] | url_encode }}"
+      url: "/dashboards/232?Brand={{ _filters['products.brand'] | url_encode }}&Category+Linked+to+Dashboard+parameter={{ value | url_encode }}"
     }
   }
+  # /dashboards/232?Category={{ value | url_encode }}&Brand={{ _filters['products.brand'] | url_encode }}
   # END OF THIS EXAMPLE
 # CATEGORY FIELD FOR LINKING EXAMPLE WITH FILTERS AND URL ENCODE WITH HTML PARAMETER
   dimension: category_example_html {
@@ -82,6 +83,6 @@ view: products {
     description: "When we drill into this field, we will be navigated to dashboard 16. Best if used to drill from dashboard 15."
     type: string
     sql: ${TABLE}.category ;;
-    html:  <a href="/dashboards/231?Category={{ value | url_encode }}&Brand={{ _filters['products.brand'] | url_encode }}">{{ value }}</a> ;;
+    html:  <a href="/dashboards/232?Category={{ value | url_encode }}&Brand={{ _filters['products.brand'] | url_encode }}">{{ value }}</a> ;;
   }
 }
