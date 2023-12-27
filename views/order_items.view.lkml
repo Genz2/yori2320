@@ -63,6 +63,17 @@ view: order_items {
       {% endif %};;
     convert_tz: no
   }
+  measure: total_revenue {
+    type: sum
+    sql: ${sale_price};;
+    value_format_name: usd
+  }
+  measure: total_profit {
+    hidden: no
+    type: number
+    sql: ${total_revenue}-${inventory_items.total_cost} ;;
+    value_format_name: usd
+  }
 
 
 
