@@ -123,6 +123,12 @@ explore: order_items {
     relationship: many_to_one
   }
 
+  join: derived_table_1 {
+    type: left_outer
+    sql_on: ${orders.user_id} = ${derived_table_1.users_id} ;;
+    relationship: many_to_one
+  }
+
   join: users {
     type: left_outer
     sql_on: ${orders.user_id} = ${users.id} ;;
@@ -222,7 +228,13 @@ explore: test {}
 
 explore: test_space_in_column_name {}
 
-explore: users {}
+explore: users {
+  join: users_extended {
+    type: left_outer
+    sql_on: ${users.id} = ${users_extended.ID} ;;
+    relationship: many_to_one
+  }
+}
 
 explore: user_data {
   join: users {
@@ -267,3 +279,9 @@ explore: xss_test_7 {}
 explore: xss_test_8 {}
 
 explore: xss_test_9 {}
+
+explore: users_extended {}
+
+explore: derived_table_1_ndt {}
+
+explore: orders_derived_example {}
