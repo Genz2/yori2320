@@ -112,7 +112,43 @@ view: products {
     sql: ${brand} ;;
   }
 
-  dimension: item_name {
+  dimension: highlighted_brand {
+    type: string
+    sql: ${brand} ;;
+    group_label: "HTML Tests"
+    # Multi value use case
+    html: <p
+    {% assign words = _user_attributes['brand'] | split: ',' %}
+    {% for word in words %}
+      {% if value == word %}
+         style= "background-color: yellow;"
+         {% else %}
+     {% endif %}
+    {% endfor %}
+    >{{value}}</p>
+    ;;
+  }
+
+# Single value use case
+# html: <p
+# {% if _user_attributes['brand'] == value %}
+# style= "background-color: yellow;"
+# {% else %}
+# {% endif %}
+# >{{value}}</p>
+# ;;
+
+# Alternate single value use case (maybe more readable?)
+# html:
+# {% if _user_attributes['brand'] == value %}
+# <p style= "background-color: yellow;">
+# {{value}}</p>
+# {% else %}
+#   <p> {{value}}</p>
+# {% endif %}
+# ;;
+
+dimension: item_name {
     type: string
     sql: ${TABLE}.item_name ;;
   }

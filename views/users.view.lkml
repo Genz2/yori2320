@@ -22,7 +22,17 @@ view: users {
   }
   dimension_group: created {
     type: time
-    timeframes: [raw, time, date, week, month, quarter, year]
+    timeframes: [raw, time, date, week, month, quarter, year, hour]
+    drill_fields: [
+      created_time,
+      created_date,
+      created_month,
+      created_quarter,
+      created_raw,
+      created_week,
+      created_year,
+      created_hour
+    ]
     sql: ${TABLE}.created_at ;;
   }
   dimension: email {
