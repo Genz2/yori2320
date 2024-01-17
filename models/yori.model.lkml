@@ -24,6 +24,7 @@ explore: billion_orders {
   }
 }
 # iam leaving a note as a test from github..
+#.
 explore: subquery_ndt {}
 
 explore: connection_reg_r3 {}
