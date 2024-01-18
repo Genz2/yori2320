@@ -6,6 +6,7 @@ view: orders {
     primary_key: yes
     type: number
     sql: ${TABLE}.id ;;
+    description: "this is a cool field"
   }
   dimension_group: created {
     type: time
