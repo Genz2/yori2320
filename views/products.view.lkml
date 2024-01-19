@@ -1,6 +1,7 @@
 view: products {
   sql_table_name: demo_db.products ;;
   drill_fields: [id]
+  view_label: "products"
 
   dimension: id {
     primary_key: yes
@@ -9,6 +10,9 @@ view: products {
   }
   dimension: brand {
     type: string
+    group_label: "item_details"
+    label: "brand"
+    description: "brand_of_item"
     sql: ${TABLE}.brand ;;
   }
   dimension: brand_linked {
@@ -28,6 +32,8 @@ view: products {
 
   dimension: category {
     type: string
+    group_label: "item_details"
+    label: "category"
     sql: ${TABLE}.category ;;
   }
 
@@ -41,6 +47,8 @@ view: products {
   # END OF THIS EXAMPLE
   dimension: department {
     type: string
+    group_label: "store_details"
+    label: "department"
     sql: ${TABLE}.department ;;
   }
 

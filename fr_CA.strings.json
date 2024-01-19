@@ -1,0 +1,15 @@
+{
+   "id": "Numéro d'identification",
+   "age": "âge",
+   "city": "ville",
+   "country": "pays",
+   "email": "courrier",
+   "first_name": "prénom Nom",
+   "gender": "genre",
+   "last_name": "Nom de famille",
+   "state": "état",
+   "zip": "code postal",
+   "traffic_source": "source",
+   "created_date": "date",
+   "count": "compte"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "ID",
+  "age": "Age",
+  "city":"City",
+  "country":"Country",
+  "email":"E-mail Address",
+  "first_name":"First Name",
+  "gender":"Gender",
+  "last_name":"Last Name",
+  "state":"US State",
+  "zip":"Zip Code",
+  "created_date":"Date of Creation"
+}

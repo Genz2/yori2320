@@ -286,3 +286,5 @@ explore: users_extended {}
 explore: derived_table_1_ndt {}
 
 explore: orders_derived_example {}
+
+explore: users_localized {}
