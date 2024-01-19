@@ -1,4 +1,4 @@
-view: users_localized {
+view: users_localized_french {
   sql_table_name: demodb.users ;;
 
   dimension: id {

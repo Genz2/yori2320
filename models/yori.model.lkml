@@ -287,4 +287,4 @@ explore: derived_table_1_ndt {}
 
 explore: orders_derived_example {}
 
-explore: users_localized {}
+explore: users_localized_french {}
