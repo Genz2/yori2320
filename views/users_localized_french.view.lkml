@@ -1,5 +1,5 @@
 view: users_localized_french {
-  sql_table_name: demodb.users ;;
+  sql_table_name: demo_db.users ;;
 
   dimension: id {
     label: "id"
