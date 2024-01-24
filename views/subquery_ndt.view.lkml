@@ -6,9 +6,6 @@ view: subquery_ndt {
         column: city { field: users.city }
         column: count {field: orders.count}
       }
-      datagroup_trigger: yori_default_datagroup
-      indexes: ["user_id"]
-
     }
     dimension: city {
       description: ""

@@ -10,6 +10,12 @@ datagroup: yori_default_datagroup {
 
 persist_with: yori_default_datagroup
 
+datagroup: training_ecommerce_default_datagroup {
+   sql_trigger: date_trunc('month', now() - interval '5' day) ;;
+}
+
+persist_with: training_ecommerce_default_datagroup
+
 explore: billion_orders {
   join: orders {
     type: left_outer
@@ -288,3 +294,9 @@ explore: derived_table_1_ndt {}
 explore: orders_derived_example {}
 
 explore: users_localized_french {}
+
+explore: orders_details_summary_sql {
+  persist_with: training_ecommerce_default_datagroup
+}
+
+explore: orders_details_summary {}
