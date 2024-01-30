@@ -11,7 +11,7 @@ datagroup: yori_default_datagroup {
 persist_with: yori_default_datagroup
 
 datagroup: training_ecommerce_default_datagroup {
-   sql_trigger: date_trunc('month', now() - interval '25' day) ;;
+   sql_trigger: SELECT EXTRACT(day FROM DATEADD(hour, -3, GETDATE())) ;;
 }
 
 persist_with: training_ecommerce_default_datagroup
